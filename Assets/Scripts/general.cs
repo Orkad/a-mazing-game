@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Diagnostics;
 
 public class general : MonoBehaviour {
 
     public GameObject cameraUp;
     public GameObject cameraFP;
+    
 	// Use this for initialization
 	void Start () {
+        Process.Start("RecoServeurX64.exe","");
         cameraUp = GameObject.FindGameObjectWithTag("cameraUp");
         cameraFP = GameObject.FindGameObjectWithTag("cameraFP");
 	}
@@ -20,7 +23,7 @@ public class general : MonoBehaviour {
 	}
 public void CameraChange()
     {
-        if (cameraFP.active)
+        if (cameraFP.activeSelf)
         {
             cameraFP.SetActive(false);
             cameraUp.SetActive(true);
