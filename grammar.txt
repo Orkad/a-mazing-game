@@ -1,0 +1,19 @@
+# comment
+#E Terminer
+#I 127.0.0.1
+#P 26000
+#V 70
+Terminer
+Monter
+Descendre
+Droite
+Gauche
+Sauter
+Ouvrir
+Rouge
+Bleu
+Vert
+Arret
+front
+Avancer
+Reculer
