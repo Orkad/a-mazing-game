@@ -9,6 +9,10 @@ using System.Collections.Generic;
 public class MazeGenerator : MonoBehaviour {
     //The cell prefab composed by 1 floor & 4 walls
     public Cell m_CellPrefab;
+    //The player gameobject
+    public GameObject m_player;
+    //The end Zone GameObject
+    public GameObject m_endZone;
     //Size X of the grid
     public int SizeX;
     //Size Y of the grid
@@ -31,6 +35,7 @@ public class MazeGenerator : MonoBehaviour {
                 //Create / Init / put in the matrix a cell
                 Cell l_Cell = Instantiate(m_CellPrefab);
                 l_Cell.Set(i, j);
+                l_Cell.Ground.GetComponent<MeshRenderer>().material.mainTexture = Resources.Load("parquet_texture") as Texture;
                 m_CellMatrix[i, j] = new KeyValuePair<Cell, bool>(l_Cell, false);
             }
         }
@@ -38,6 +43,16 @@ public class MazeGenerator : MonoBehaviour {
         //SECOND STEP
         //RECURSION
         Maze(m_CellMatrix[0, 0].Key);
+
+        //START AND END ZONE
+        int startX, startY, endX, endY;
+        FindRandomCell(out startX, out startY);
+        FindRandomCell(out endX, out endY);
+        Debug.Log("start(" + startX + "," + startY + ")");
+        float cellSizeX = m_CellPrefab.SizeX;
+        float cellSizeY = m_CellPrefab.SizeY;
+        m_player.transform.position = new Vector3(startX * cellSizeX, 0.2f, startY * cellSizeY);
+        m_endZone.transform.position = new Vector3(endX * cellSizeX, 0.2f, endY * cellSizeY);
     }
 
     void Maze(Cell p_Cell)
@@ -119,5 +134,11 @@ public class MazeGenerator : MonoBehaviour {
             yield return candidates[index];
             candidates.RemoveAt(index);
         }
+    }
+
+    private void FindRandomCell(out int p_X, out int p_Y)
+    {
+        p_X = Random.Range(0, SizeX - 1);
+        p_Y = Random.Range(0, SizeY - 1);
     }
 }
