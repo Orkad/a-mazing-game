@@ -31,8 +31,10 @@ public static class GameManager{
 
 	public static void WinLevel(){
 		Game currentGame = GameObject.FindObjectOfType<Game> ();
-		if (currentGame.m_StoryMod)
-			ContinueStoryGame(++Data.Difficulty);
+		if (currentGame.m_StoryMod) {
+			Data.Difficulty++;
+			ContinueStoryGame();
+		}
 		else
 			BackToMenu ();
 	}
