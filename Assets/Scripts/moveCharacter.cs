@@ -21,26 +21,26 @@ public class moveCharacter : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         switch (speechReco.UDPGetPacket()){
-            case "Rouge": superHero.GetComponent<Light>().color = Color.red;
+            case "Red": superHero.GetComponent<Light>().color = Color.red;
                 break;
-            case "Vert": superHero.GetComponent<Light>().color = Color.green;
+            case "Green": superHero.GetComponent<Light>().color = Color.green;
                 break;
-            case "Bleu":
+            case "Blue":
                 superHero.GetComponent<Light>().color = Color.blue;
                 break;
         }
-        if (Input.GetKey(KeyCode.Z) || speechReco.UDPGetPacket() == "Monter")
+        if (Input.GetKey(KeyCode.Z) || speechReco.UDPGetPacket() == "Up")
         {
             superHero.transform.Translate(Vector3.forward * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.Q) || speechReco.UDPGetPacket() == "Gauche") {
+        if (Input.GetKey(KeyCode.Q) || speechReco.UDPGetPacket() == "Left") {
             superHero.transform.Translate(Vector3.left * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.D) || speechReco.UDPGetPacket() == "Droite")
+        if (Input.GetKey(KeyCode.D) || speechReco.UDPGetPacket() == "Right")
         {
             superHero.transform.Translate(Vector3.right * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.S) || speechReco.UDPGetPacket() == "Descendre")
+        if (Input.GetKey(KeyCode.S) || speechReco.UDPGetPacket() == "Down")
         {
             superHero.transform.Translate(Vector3.back * Time.deltaTime);
         }
@@ -48,7 +48,7 @@ public class moveCharacter : MonoBehaviour {
         {
             superHero.transform.Translate(Vector3.up * Time.deltaTime);
         }
-        if (speechReco.UDPGetPacket()== "Arret")
+        if (speechReco.UDPGetPacket()== "Stop")
         {
             superHero.transform.position = superHero.transform.position;
         }
