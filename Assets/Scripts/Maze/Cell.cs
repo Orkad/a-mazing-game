@@ -7,6 +7,7 @@ public class Cell : MonoBehaviour {
     public GameObject WallE;
     public GameObject WallS;
     public GameObject WallW;
+	public GameObject Floor;
 	[HideInInspector]
 	public bool Mazed = false;
 

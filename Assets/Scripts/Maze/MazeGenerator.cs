@@ -10,9 +10,9 @@ public class MazeGenerator : MonoBehaviour {
     //The cell prefab composed by 1 floor & 4 walls
     public Cell m_CellPrefab;
     //The player gameobject
-    public GameObject m_player;
+    public GameObject m_PlayerPrefab;
     //The end Zone GameObject
-    public GameObject m_endZone;
+    public GameObject m_EndZonePrefab;
     //Size X of the grid
     public int SizeX;
     //Size Y of the grid
@@ -49,8 +49,8 @@ public class MazeGenerator : MonoBehaviour {
 		FindRandomCell(out endX, out endY);
         float cellSizeX = m_CellPrefab.SizeX;
         float cellSizeY = m_CellPrefab.SizeY;
-        m_player.transform.position = new Vector3(startX * cellSizeX, 0.3f, startY * cellSizeY);
-        m_endZone.transform.position = new Vector3(endX * cellSizeX, 0.3f, endY * cellSizeY);
+		Instantiate (m_PlayerPrefab, new Vector3 (startX * cellSizeX, 0.3f, startY * cellSizeY), Quaternion.identity);
+		Instantiate (m_EndZonePrefab, new Vector3 (endX * cellSizeX, 0.3f, endY * cellSizeY),Quaternion.identity);
     }
 
     void Maze(Cell p_Cell)

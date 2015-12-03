@@ -10,6 +10,7 @@ public class Menu:MonoBehaviour{
 
 	void Start(){
 		newStoryGameButton.onClick.AddListener (GameManager.NewStoryGame);
-		continueStoryGameButton.onClick.AddListener (GameManager.ContinueStoryGame);
+		continueStoryGameButton.onClick.AddListener (GameManager.ContinueHardcoreMode);
+
 	}
 }

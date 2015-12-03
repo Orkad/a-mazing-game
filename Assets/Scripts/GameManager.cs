@@ -5,6 +5,15 @@ public static class GameManager{
 
 	private const string GAME_SCENE_NAME = "Game";
 	private const string MENU_SCENE_NAME = "Menu";
+	private static bool hardcoreMode = false;
+	private static int currentDifficulty = 0;
+
+	public static void ContinueHardcoreMode(){
+		hardcoreMode = true;
+		Application.LoadLevel (GAME_SCENE_NAME);
+		MazeGenerator generator = GameObject.FindObjectOfType<MazeGenerator> ();
+		generator.SizeX = generator.SizeY = ++currentDifficulty + 4;
+	}
 
 	public static void NewStoryGame(){
 		Data.Difficulty = 0;
@@ -30,11 +39,8 @@ public static class GameManager{
 	}
 
 	public static void WinLevel(){
-		Game currentGame = GameObject.FindObjectOfType<Game> ();
-		if (currentGame.m_StoryMod) {
-			Data.Difficulty++;
-			ContinueStoryGame();
-		}
+		if (hardcoreMode)
+			ContinueHardcoreMode ();
 		else
 			BackToMenu ();
 	}
