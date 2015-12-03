@@ -7,8 +7,9 @@ public class Cell : MonoBehaviour {
     public GameObject WallE;
     public GameObject WallS;
     public GameObject WallW;
-    public int ReadX;
-    public int ReadY;
+	[HideInInspector]
+	public bool Mazed = false;
+
     public float PositionY
     {
         get { return transform.position.z; }
@@ -34,8 +35,8 @@ public class Cell : MonoBehaviour {
 
     public void Set(int p_X,int p_Y)
     {
-        ReadX = IndexX = p_X;
-        ReadY = IndexY = p_Y;
+        IndexX = p_X;
+        IndexY = p_Y;
     }
 
     public void DeleteWalls(params Direction[] p_Directions)

@@ -19,30 +19,29 @@ public class MazeGenerator : MonoBehaviour {
     public int SizeY;
     //TO OPTIMIZE by putting the bool that tell if the cell is already "mazed" by the algorythm
     //2D association of a Cell and a bool sized by sizeX & sizeY
-    private KeyValuePair<Cell,bool>[,] m_CellMatrix;
+    private Cell[,] m_CellMatrix;
     
 
     void Start()
     {
         //FIRST STEP
         //Create a 2D grid
-        m_CellMatrix = new KeyValuePair<Cell, bool>[SizeX, SizeY];
+        m_CellMatrix = new Cell[SizeX, SizeY];
         //2D iteration
         for (int i = 0; i < SizeX; i++)
         {
             for(int j=0;j<SizeY;j++)
             {
                 //Create / Init / put in the matrix a cell
-                Cell l_Cell = Instantiate(m_CellPrefab);
+                Cell l_Cell = Instantiate<Cell>(m_CellPrefab);
                 l_Cell.Set(i, j);
-                l_Cell.Ground.GetComponent<MeshRenderer>().material.mainTexture = Resources.Load("parquet_texture") as Texture;
-                m_CellMatrix[i, j] = new KeyValuePair<Cell, bool>(l_Cell, false);
+                m_CellMatrix[i, j] = l_Cell;
             }
         }
 
         //SECOND STEP
         //RECURSION
-        Maze(m_CellMatrix[0, 0].Key);
+        Maze(m_CellMatrix[0, 0]);
 
         //START AND END ZONE
         int startX, startY, endX, endY;
@@ -58,10 +57,10 @@ public class MazeGenerator : MonoBehaviour {
     void Maze(Cell p_Cell)
     {
         //Set the bool for the Cell to true
-        m_CellMatrix[p_Cell.IndexX, p_Cell.IndexY] = new KeyValuePair<Cell, bool>(p_Cell, true);
+		m_CellMatrix [p_Cell.IndexX, p_Cell.IndexY].Mazed = true;
         Cell l_Cell;
         //WHILE A RANDOM NEIGHBOUR IS FOUND STACK THE MAZE WAY 
-        while ((l_Cell = Neighbour<Cell>(p_Cell.IndexX, p_Cell.IndexY, m_CellMatrix)) != null)
+        while ((l_Cell = NeighbourCell(p_Cell.IndexX, p_Cell.IndexY)) != null)
         {
             l_Cell.DeleteWallsBetween(p_Cell);
             p_Cell.DeleteWallsBetween(l_Cell);
@@ -77,12 +76,13 @@ public class MazeGenerator : MonoBehaviour {
     /// <param name="y">Y</param>
     /// <param name="p_Matrix">//2D association of a type T and a bool sized by sizeX & sizeY</param>
     /// <returns>return the founded neighbour else null</returns>
-    static T Neighbour<T>(int x, int y, KeyValuePair<T, bool>[,] p_Matrix) where T :class
+    Cell NeighbourCell(int x, int y)
     {
-        bool l_CanGoNorth   = y + 1 < p_Matrix.GetLength(1) && p_Matrix[x, y + 1].Value == false;
-        bool l_CanGoEast    = x + 1 < p_Matrix.GetLength(0) && p_Matrix[x + 1, y].Value == false;
-        bool l_CanGoSouth   = y - 1 >= 0                    && p_Matrix[x, y - 1].Value == false;
-        bool l_CanGoWest    = x - 1 >= 0                    && p_Matrix[x - 1, y].Value == false;
+		bool l_CanGoNorth   = y + 1 < m_CellMatrix.GetLength(1) && m_CellMatrix[x, y + 1].Mazed == false;
+		bool l_CanGoEast    = x + 1 < m_CellMatrix.GetLength(0) && m_CellMatrix[x + 1, y].Mazed == false;
+		bool l_CanGoSouth   = y - 1 >= 0                    	&& m_CellMatrix[x, y - 1].Mazed == false;
+		bool l_CanGoWest    = x - 1 >= 0                    	&& m_CellMatrix[x - 1, y].Mazed == false;
+
         //SWAP THE ORDER CAN BE OPTIMIZED
         foreach (int i in UniqueRandom(0,3))
         {
@@ -91,22 +91,22 @@ public class MazeGenerator : MonoBehaviour {
                 case 0:
                     //NORTH DIRECTION AVAILABLE
                     if (l_CanGoNorth)
-                        return p_Matrix[x, y + 1].Key;
+						return m_CellMatrix[x, y + 1];
                     break;
                 case 1:
                     //WEST DIRECTION AVAILABLE
                     if (l_CanGoEast)
-                        return p_Matrix[x + 1, y].Key;
+						return m_CellMatrix[x + 1, y];
                     break;
                 case 2:
                     //SOUTH DIRECTION AVAILABLE
                     if (l_CanGoSouth)
-                        return p_Matrix[x, y - 1].Key;
+						return m_CellMatrix[x, y - 1];
                     break;
                 case 3:
                     //EAST DIRECTION AVAILABLE
                     if (l_CanGoWest)
-                        return p_Matrix[x - 1, y].Key;
+						return m_CellMatrix[x - 1, y];
                     break;
                 default:
                     break;
