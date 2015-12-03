@@ -43,11 +43,10 @@ public class MazeGenerator : MonoBehaviour {
         //RECURSION
         Maze(m_CellMatrix[0, 0]);
 
-        //START AND END ZONE
-        int startX, startY, endX, endY;
-        FindRandomCell(out startX, out startY);
-        FindRandomCell(out endX, out endY);
-        Debug.Log("start(" + startX + "," + startY + ")");
+		//START AND END ZONE
+		int startX, startY, endX, endY;
+		FindRandomCell(out startX, out startY);
+		FindRandomCell(out endX, out endY);
         float cellSizeX = m_CellPrefab.SizeX;
         float cellSizeY = m_CellPrefab.SizeY;
         m_player.transform.position = new Vector3(startX * cellSizeX, 0.2f, startY * cellSizeY);
