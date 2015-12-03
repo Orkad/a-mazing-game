@@ -24,6 +24,8 @@ public class MazeGenerator : MonoBehaviour {
 
     void Start()
     {
+        if (GameManager.hardcoreMode)
+            SizeX = SizeY = ++GameManager.currentDifficulty + 4;
         //FIRST STEP
         //Create a 2D grid
         m_CellMatrix = new Cell[SizeX, SizeY];
@@ -53,7 +55,7 @@ public class MazeGenerator : MonoBehaviour {
 		Instantiate (m_EndZonePrefab, new Vector3 (endX * cellSizeX, 0.3f, endY * cellSizeY),Quaternion.identity);
     }
 
-    void Maze(Cell p_Cell)
+    private void Maze(Cell p_Cell)
     {
         //Set the bool for the Cell to true
 		m_CellMatrix [p_Cell.IndexX, p_Cell.IndexY].Mazed = true;
@@ -75,7 +77,7 @@ public class MazeGenerator : MonoBehaviour {
     /// <param name="y">Y</param>
     /// <param name="p_Matrix">//2D association of a type T and a bool sized by sizeX & sizeY</param>
     /// <returns>return the founded neighbour else null</returns>
-    Cell NeighbourCell(int x, int y)
+    private Cell NeighbourCell(int x, int y)
     {
 		bool l_CanGoNorth   = y + 1 < m_CellMatrix.GetLength(1) && m_CellMatrix[x, y + 1].Mazed == false;
 		bool l_CanGoEast    = x + 1 < m_CellMatrix.GetLength(0) && m_CellMatrix[x + 1, y].Mazed == false;

@@ -4,13 +4,11 @@ using UnityEngine.UI;
 
 public class Menu:MonoBehaviour{
 
-	public Button newStoryGameButton;
-	public Button customGameButton;
-	public Button continueStoryGameButton;
+	public Button m_HardcoreGameButton;
+    public Button m_QuitButton;
 
 	void Start(){
-		newStoryGameButton.onClick.AddListener (GameManager.NewStoryGame);
-		continueStoryGameButton.onClick.AddListener (GameManager.ContinueHardcoreMode);
-
+        m_HardcoreGameButton.onClick.AddListener(GameManager.ContinueHardcoreMode);
+        m_QuitButton.onClick.AddListener (Application.Quit);
 	}
 }
