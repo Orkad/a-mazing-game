@@ -1,15 +1,14 @@
 # comment
-#E Close
+#E Finnish
 #I 127.0.0.1
 #P 26000
 #V 70
-Close
-Switch
-Finish
-Terminer
+Finnish
 Up
 Down
-Left
 Right
+Left
+Blue
+Green
+Red
 Stop
-Jump
