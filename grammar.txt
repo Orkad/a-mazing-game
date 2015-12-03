@@ -1,19 +1,15 @@
 # comment
-#E Terminer
+#E Close
 #I 127.0.0.1
 #P 26000
 #V 70
+Close
+Switch
+Finish
 Terminer
-Monter
-Descendre
-Droite
-Gauche
-Sauter
-Ouvrir
-Rouge
-Bleu
-Vert
-Arret
-front
-Avancer
-Reculer
+Up
+Down
+Left
+Right
+Stop
+Jump
