@@ -49,8 +49,8 @@ public class MazeGenerator : MonoBehaviour {
 		FindRandomCell(out endX, out endY);
         float cellSizeX = m_CellPrefab.SizeX;
         float cellSizeY = m_CellPrefab.SizeY;
-        m_player.transform.position = new Vector3(startX * cellSizeX, 0.2f, startY * cellSizeY);
-        m_endZone.transform.position = new Vector3(endX * cellSizeX, 0.2f, endY * cellSizeY);
+        m_player.transform.position = new Vector3(startX * cellSizeX, 0.3f, startY * cellSizeY);
+        m_endZone.transform.position = new Vector3(endX * cellSizeX, 0.3f, endY * cellSizeY);
     }
 
     void Maze(Cell p_Cell)
