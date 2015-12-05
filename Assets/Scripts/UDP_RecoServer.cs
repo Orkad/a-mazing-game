@@ -71,5 +71,10 @@ public class UDP_RecoServer : MonoBehaviour
         if (receiveThread != null) receiveThread.Abort();
         client.Close();
     }
+
+    public void set_strReceive(string command)
+    {
+        strReceiveUDP = command;
+    }
 }
 // *********************************************************
