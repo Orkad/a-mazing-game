@@ -2,7 +2,7 @@
 #E Finnish
 #I 127.0.0.1
 #P 26000
-#V 70
+#V 90
 Finnish
 Up
 Down
