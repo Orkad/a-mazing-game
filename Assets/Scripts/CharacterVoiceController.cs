@@ -5,8 +5,7 @@ using System.Diagnostics;
 public class CharacterVoiceController : MonoBehaviour {
 
     public UDP_RecoServer speechReco;
-    private static string outputPath = "RecoServeurX64.exe";
-    Process foo = new Process();
+
     private Rigidbody rb { get { return GetComponent<Rigidbody>(); } }
     public KeyCode m_NorthKey = KeyCode.Z;
     public KeyCode m_EastKey = KeyCode.D;
@@ -17,8 +16,7 @@ public class CharacterVoiceController : MonoBehaviour {
 
     void Start()
     {
-        foo.StartInfo.FileName = outputPath;
-        foo.Start();
+        
     }
 
 	void Update () {
