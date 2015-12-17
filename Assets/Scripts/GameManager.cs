@@ -9,13 +9,8 @@ public static class GameManager {
     public static bool hardcoreMode = false;
     public static int currentDifficulty = 0;
 
-    private static Process recoServer;
-    private static string outputPath = "RecoServeurX64.exe";
 
     public static void ContinueHardcoreMode() {
-        recoServer = new Process();
-        recoServer.StartInfo.FileName = outputPath;
-        recoServer.Start();
         hardcoreMode = true;
         Application.LoadLevel(GAME_SCENE_NAME);
     }
@@ -26,7 +21,6 @@ public static class GameManager {
     }
 
     public static void BackToMenu() {
-        recoServer.Kill();
         Application.LoadLevel(MENU_SCENE_NAME);
     }
 
@@ -34,7 +28,6 @@ public static class GameManager {
         if (hardcoreMode)
         {
             ContinueHardcoreMode();
-            recoServer.Kill();
         }
         else
             BackToMenu();

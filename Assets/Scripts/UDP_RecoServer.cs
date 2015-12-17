@@ -8,6 +8,7 @@ using System.Net;
 using System.Text;
 using System.Net.Sockets;
 using System.Threading;
+using System.Diagnostics;
 
 public class UDP_RecoServer : MonoBehaviour
 {
@@ -18,10 +19,17 @@ public class UDP_RecoServer : MonoBehaviour
     string LocalIP = String.Empty;
     string hostname;
 
+    private static Process recoServer;
+    private const string outputPath = "RecoServeurX64.exe";
+
+
     public void Start()
     {
         Application.runInBackground = true;
         init();
+        recoServer = new Process();
+        recoServer.StartInfo.FileName = outputPath;
+        //recoServer.Start();
     }
     // init
     private void init()
@@ -34,7 +42,7 @@ public class UDP_RecoServer : MonoBehaviour
         if (ips.Length > 0)
         {
             LocalIP = ips[0].ToString();
-            Debug.Log(" MY IP : " + LocalIP);
+            UnityEngine.Debug.Log(" MY IP : " + LocalIP);
         }
     }
 
@@ -51,7 +59,7 @@ public class UDP_RecoServer : MonoBehaviour
                 // ***********************************************************************
                 // Simple Debug. Must be replaced with SendMessage for example.
                 // ***********************************************************************
-                Debug.Log(strReceiveUDP);
+                UnityEngine.Debug.Log(strReceiveUDP);
                 // ***********************************************************************
             }
             catch (Exception err)
@@ -70,11 +78,22 @@ public class UDP_RecoServer : MonoBehaviour
     {
         if (receiveThread != null) receiveThread.Abort();
         client.Close();
+        UnityEngine.Debug.Log("close server");
     }
 
     public void set_strReceive(string command)
     {
         strReceiveUDP = command;
+    }
+
+    public void startServer()
+    {
+        recoServer.Start();
+    }
+
+    public void stopServer()
+    {
+        recoServer.Kill();
     }
 }
 // *********************************************************
