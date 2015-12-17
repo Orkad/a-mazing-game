@@ -1,23 +1,61 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System;
+using System.Text;
+using System.Net;
+using System.Net.Sockets;
+using System.Threading;
 using System.Diagnostics;
 
 public class CharacterVoiceController : MonoBehaviour {
 
     public UDP_RecoServer speechReco;
 
-
     private Rigidbody rb { get { return GetComponent<Rigidbody>(); } }
     public float m_Force = 50f;
     public float m_MaxSpeed = 3f;
+	//Voice Recognition
+	private Process m_Process;
+	private Thread m_Thread;
+	private string m_Word;
 
-    void Start()
+	void OnEnable()
     {
-        
+		m_Process = new Process ();
+		m_Process.StartInfo.RedirectStandardOutput = true;
+		m_Process.StartInfo.UseShellExecute = false;
+		m_Process.StartInfo.CreateNoWindow = true;
+		// Setup executable and parameters
+		m_Process.StartInfo.FileName = "Recognition.exe";
+		// Go
+		m_Process.Start();
+		m_Thread = new Thread(new ThreadStart(ReceiveData));
     }
 
+	public void OnDisable()
+	{
+		m_Process.Kill ();
+	}
+
+	private void ReceiveData(){
+		UdpClient client = new UdpClient(26000);
+		while (true) {
+			try
+			{
+				if(m_Process.HasExited)
+					return;
+				IPEndPoint anyIP = new IPEndPoint(IPAddress.Broadcast, 26000);
+				byte[] data = client.Receive(ref anyIP);
+				m_Word = Encoding.UTF8.GetString(data);
+			}
+			catch (Exception err)
+			{
+				print(err.ToString());
+			}
+		}
+	}
+
 	void FixedUpdate () {
-        switch (speechReco.UDPGetPacket())
+        switch (m_Word)
         {
             case "Up":
                 //transform.Translate(Vector3.forward * Time.deltaTime/1.5f);
@@ -39,13 +77,5 @@ public class CharacterVoiceController : MonoBehaviour {
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, m_MaxSpeed);
     }
 
-    public void OnDisable()
-    {
-        speechReco.stopServer();
-    }
-
-    void OnEnable()
-    {
-        speechReco.startServer();
-    }
+    
 }
