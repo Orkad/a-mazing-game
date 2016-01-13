@@ -8,8 +8,6 @@ using System.Diagnostics;
 
 public class CharacterVoiceController : MonoBehaviour {
 
-    public UDP_RecoServer speechReco;
-
     private Rigidbody rb { get { return GetComponent<Rigidbody>(); } }
     public float m_Force = 50f;
     public float m_MaxSpeed = 3f;
