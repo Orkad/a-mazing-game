@@ -1,0 +1,90 @@
+Initialize engine version: 5.3.0f4 (2524e04062b4)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: Radeon (TM) HD 8670M (ID=0x6660)
+    Vendor:   ATI
+    VRAM:     2040 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Rémy\Documents\mazing\a-mazing-game_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Rémy\Documents\mazing\a-mazing-game_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Rémy\Documents\mazing\a-mazing-game_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\Rémy\Documents\mazing\a-mazing-game_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Rémy\Documents\mazing\a-mazing-game_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Rémy\Documents\mazing\a-mazing-game_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Rémy\Documents\mazing\a-mazing-game_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Rémy\Documents\mazing\a-mazing-game_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Rémy\Documents\mazing\a-mazing-game_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Rémy\Documents\mazing\a-mazing-game_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Rémy\Documents\mazing\a-mazing-game_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Rémy\Documents\mazing\a-mazing-game_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Rémy\Documents\mazing\a-mazing-game_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Rémy\Documents\mazing\a-mazing-game_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.069 seconds
+Platform assembly: C:\Users\Rémy\Documents\mazing\a-mazing-game_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Rémy\Documents\mazing\a-mazing-game_Data\Managed\System.dll (this message is harmless)
+desktop: 1366x768 60Hz; virtual: 2390x768 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 1.079216 ms
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 2e0c -> priority: 1 
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 6.160690 ms
+
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 239.
+Total: 0.870399 ms (FindLiveObjects: 0.052895 ms CreateObjectMapping: 0.035131 ms MarkObjects: 0.750003 ms  DeleteObjects: 0.031579 ms)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.893957 ms
+
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 239.
+Total: 0.305527 ms (FindLiveObjects: 0.043026 ms CreateObjectMapping: 0.019342 ms MarkObjects: 0.235264 ms  DeleteObjects: 0.007105 ms)
+
+Win32Exception: ApplicationName='Recognition.exe', CommandLine='', CurrentDirectory=''
+  at System.Diagnostics.Process.Start_noshell (System.Diagnostics.ProcessStartInfo startInfo, System.Diagnostics.Process process) [0x00000] in <filename unknown>:0 
+  at System.Diagnostics.Process.Start_common (System.Diagnostics.ProcessStartInfo startInfo, System.Diagnostics.Process process) [0x00000] in <filename unknown>:0 
+  at System.Diagnostics.Process.Start () [0x00000] in <filename unknown>:0 
+  at (wrapper remoting-invoke-with-check) System.Diagnostics.Process:Start ()
+  at CharacterVoiceController.OnEnable () [0x00000] in <filename unknown>:0 
+UnityEngine.Behaviour:set_enabled(Boolean)
+ControllerSwitcher:SwitchController()
+ControllerSwitcher:Update()
+ 
+(Filename:  Line: -1)
+
+SystemException: No process to kill.
+  at System.Diagnostics.Process.Close (Int32 signo) [0x00000] in <filename unknown>:0 
+  at System.Diagnostics.Process.Kill () [0x00000] in <filename unknown>:0 
+  at (wrapper remoting-invoke-with-check) System.Diagnostics.Process:Kill ()
+  at CharacterVoiceController.OnDisable () [0x00000] in <filename unknown>:0 
+UnityEngine.Behaviour:set_enabled(Boolean)
+ControllerSwitcher:SwitchController()
+ControllerSwitcher:Update()
+ 
+(Filename:  Line: -1)
+
+Win32Exception: ApplicationName='Recognition.exe', CommandLine='', CurrentDirectory=''
+  at System.Diagnostics.Process.Start_noshell (System.Diagnostics.ProcessStartInfo startInfo, System.Diagnostics.Process process) [0x00000] in <filename unknown>:0 
+  at System.Diagnostics.Process.Start_common (System.Diagnostics.ProcessStartInfo startInfo, System.Diagnostics.Process process) [0x00000] in <filename unknown>:0 
+  at System.Diagnostics.Process.Start () [0x00000] in <filename unknown>:0 
+  at (wrapper remoting-invoke-with-check) System.Diagnostics.Process:Start ()
+  at CharacterVoiceController.OnEnable () [0x00000] in <filename unknown>:0 
+UnityEngine.Behaviour:set_enabled(Boolean)
+ControllerSwitcher:SwitchController()
+ControllerSwitcher:Update()
+ 
+(Filename:  Line: -1)
+
+SystemException: No process to kill.
+  at System.Diagnostics.Process.Close (Int32 signo) [0x00000] in <filename unknown>:0 
+  at System.Diagnostics.Process.Kill () [0x00000] in <filename unknown>:0 
+  at (wrapper remoting-invoke-with-check) System.Diagnostics.Process:Kill ()
+  at CharacterVoiceController.OnDisable () [0x00000] in <filename unknown>:0 
+UnityEngine.Behaviour:set_enabled(Boolean)
+ControllerSwitcher:SwitchController()
+ControllerSwitcher:Update()
+ 
+(Filename:  Line: -1)
+
