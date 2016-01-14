@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Diagnostics;
 
@@ -13,7 +12,7 @@ public static class GameManager {
 
     public static void ContinueHardcoreMode() {
         hardcoreMode = true;
-        SceneManager.LoadScene(GAME_SCENE_NAME);
+        Application.LoadLevel(GAME_SCENE_NAME);
     }
 
 
@@ -22,7 +21,7 @@ public static class GameManager {
     }
 
     public static void BackToMenu() {
-        SceneManager.LoadScene(MENU_SCENE_NAME);
+        Application.LoadLevel(MENU_SCENE_NAME);
     }
 
     public static void WinLevel() {
